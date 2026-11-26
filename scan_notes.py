@@ -1,11 +1,14 @@
 
 import csv
-import getpass
+import os
 import re
 import requests
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 BASE = "http://127.0.0.1:41184"
-TOKEN = getpass.getpass("Joplin API token: ")
+TOKEN = os.getenv("joplin_token")
 
 def api(path, **params):
     response = requests.get(
